@@ -1,0 +1,138 @@
+:root {
+    --bg: #000000;
+    --text-primary: #f5f5f7;
+    --text-secondary: #a1a1aa;
+    --accent: #6366f1;
+    --accent-dark: #4f46e5;
+    --glass-bg: rgba(30, 30, 46, 0.14);
+    --glass-border: linear-gradient(145deg, rgba(255,255,255,0.38), rgba(255,255,255,0.12));
+    --glow: rgba(99, 102, 241, 0.55);
+    --card-bg: rgba(30, 30, 46, 0.22);
+    --shadow: 0 40px 120px rgba(0,0,0,0.95);
+}
+
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    background-image: radial-gradient(circle at 10% 20%, var(--glow) 0%, transparent 70%), radial-gradient(circle at 90% 80%, rgba(139,92,246,0.22) 0%, transparent 70%);
+    background-attachment: fixed;
+}
+
+.glass-nav, .glass-footer, .glass, .glass-item, .card {
+    backdrop-filter: blur(120px) saturate(350%);
+    -webkit-backdrop-filter: blur(120px) saturate(350%);
+    background: var(--glass-bg);
+    border: 1px solid transparent;
+    border-image: var(--glass-border) 1;
+    box-shadow: var(--shadow), inset 0 0 0 2px rgba(255,255,255,0.18);
+    transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+    .glass::before,
+    .card::before,
+    .glass-item::before {
+        content: '';
+        position: absolute;
+        inset: -8px;
+        background: linear-gradient(135deg, rgba(255,255,255,0.28), transparent 50%);
+        border-radius: inherit;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 1.2s ease;
+        z-index: -1;
+    }
+
+    .glass:hover::before,
+    .card:hover::before,
+    .glass-item:hover::before {
+        opacity: 1;
+    }
+
+    .glass:hover,
+    .card:hover,
+    .glass-item:hover {
+        transform: translateY(-32px) scale(1.05);
+        box-shadow: 0 80px 160px rgba(0,0,0,1.05), inset 0 0 0 2px rgba(255,255,255,0.25);
+        backdrop-filter: blur(140px) saturate(380%);
+    }
+
+    .navbar-title, .nav-link, .footer-text, .footer-link, .accordion-button, .accordion-body, .card-title, .card p, .card li {
+        color: var(--text-primary) !important;
+    }
+
+        .nav-link:hover, .hover-link:hover, .accordion-button:not(.collapsed) {
+            color: var(--accent) !important;
+        }
+
+main.main-content {
+    padding-top: 110px;
+    padding-bottom: 80px;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.card {
+    border-radius: 40px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    border: none;
+    color: #ffffff;
+    box-shadow: 0 22px 70px rgba(99, 102, 241, 0.75);
+}
+
+    .btn-primary:hover {
+        box-shadow: 0 50px 130px rgba(99, 102, 241, 0.95);
+        transform: translateY(-14px) scale(1.09);
+    }
+
+.btn-outline-light {
+    color: var(--text-primary);
+    border-color: rgba(255,255,255,0.45);
+}
+
+    .btn-outline-light:hover {
+        background: rgba(255,255,255,0.25);
+        border-color: var(--accent);
+    }
+
+.logo {
+    transition: all 0.7s ease;
+}
+
+.navbar-brand:hover .logo {
+    transform: scale(1.28) rotate(15deg);
+}
+
+.accordion-button {
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    border-radius: 20px !important;
+}
+
+    .accordion-button:not(.collapsed) {
+        background: rgba(99, 102, 241, 0.28) !important;
+        color: var(--accent) !important;
+        box-shadow: inset 0 -1px 0 rgba(255,255,255,0.16);
+    }
+
+.accordion-body {
+    color: var(--text-secondary);
+    background: transparent;
+}
+
+.text-secondary {
+    color: var(--text-secondary) !important;
+}
+
+.hover-link:hover {
+    color: var(--accent) !important;
+    transform: translateY(-5px);
+}
+    
